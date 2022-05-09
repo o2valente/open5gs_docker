@@ -21,25 +21,25 @@ After cloning the repository choose which of the deployments you wish to do and 
 
 For EPC:
 ```sh
-cd open5gs_docker/epc
+cd open5gs_docker/epc/base
 docker build --no-cache --force-rm -t docker_open5gs .
 ```
 
 For 5G SA:
 ```sh
-cd open5gs_docker/5G_sa
+cd open5gs_docker/5G_sa/base
 docker build --no-cache --force-rm -t docker_open5gs .
 ```
 
 For 4G/5G NSA User Plane:
 ```sh
-cd open5gs_docker/up_4g
+cd open5gs_docker/up_4g/base
 docker build --no-cache --force-rm -t docker_open5gs .
 ```
 
 For 5G User Plane:
 ```sh
-cd open5gs_docker/up_5g
+cd open5gs_docker/up_5g/base
 docker build --no-cache --force-rm -t docker_open5gs .
 ```
 
