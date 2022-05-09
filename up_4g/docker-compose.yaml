@@ -1,0 +1,54 @@
+version: '3'
+services:
+  sgwu:
+    image: docker_open5gs
+    depends_on:
+      - upf
+    container_name: sgwu
+    env_file:
+      - .env
+    environment:
+      - COMPONENT_NAME=sgwu-1
+    volumes:
+      - ./sgwu:/mnt/sgwu
+      - ./log:/open5gs/install/var/log/open5gs
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    expose:
+      - "8805/udp"
+      - "2152/udp"
+    ports:
+      - "2152:2152/udp"
+    networks:
+      default:
+        ipv4_address: ${SGWU_IP}
+  upf:
+    image: docker_open5gs
+    container_name: upf
+    env_file:
+      - .env
+    environment:
+      - COMPONENT_NAME=upf-1
+    volumes:
+      - ./upf:/mnt/upf
+      - ./log:/open5gs/install/var/log/open5gs
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    expose:
+      - "2152/udp"
+      - "8805/udp"
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+    sysctls:
+      - net.ipv4.ip_forward=1
+      #- net.ipv6.conf.all.disable_ipv6=0
+    networks:
+      default:
+        ipv4_address: ${UPF_IP}
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${TEST_NETWORK}
+
