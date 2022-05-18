@@ -19,6 +19,7 @@ services:
       - "2152/udp"
     ports:
       - "2152:2152/udp"
+      - "8805:8805/udp"
     networks:
       default:
         ipv4_address: ${SGWU_IP}
@@ -37,6 +38,9 @@ services:
     expose:
       - "2152/udp"
       - "8805/udp"
+      - "8806/udp"
+    ports:
+      - "8806:8806/udp"
     cap_add:
       - NET_ADMIN
     privileged: true

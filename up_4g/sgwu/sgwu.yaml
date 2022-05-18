@@ -9,7 +9,9 @@ sgwu:
         advertise: SGWU_ADVERTISE_IP
     pfcp:
       - addr: SGWU_IP
+        advertise: SGWU_ADVERTISE_IP
+
 
 sgwc:
-    pfcp:
-      - addr: SGWC_IP
+   # pfcp:
+    #  - addr: SGWC_IP

@@ -28,6 +28,10 @@
 
 if [[ -z "$COMPONENT_NAME" ]]; then
 	echo "Error: COMPONENT_NAME environment variable not set"; exit 1;
+elif [[ "$COMPONENT_NAME" =~ ^(sgwu-[[:digit:]]+$) ]]; then
+	echo "Deploying component: '$COMPONENT_NAME'"
+	/mnt/sgwu/sgwu_init.sh  && \
+    cd install/bin && ./open5gs-sgwud
 elif [[ "$COMPONENT_NAME" =~ ^(upf-[[:digit:]]+$) ]]; then
 	echo "Deploying component: '$COMPONENT_NAME'"
 	/mnt/upf/upf_init.sh  && \

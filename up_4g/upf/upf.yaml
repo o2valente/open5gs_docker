@@ -6,16 +6,20 @@ parameter:
 upf:
     pfcp:
       - addr: UPF_IP
-        advertise: UPF_ADVERTISE_IP
+#        advertise: UPF_ADVERTISE_IP
+        port: 8806
     gtpu:
       - addr: UPF_IP
-        advertise: UPF_ADVERTISE_IP
+     #   advertise: UPF_ADVERTISE_IP
     subnet:
       - addr: 10.45.0.1/16
         dev: ogstun
         dnn: internet
+      - addr: 10.47.0.1/16
+        dev: ogstun2
+        dnn: v2x
 
 
 smf:
-    #pfcp:
-      #- addr: SMF_IP
+ #   pfcp:
+  #    - addr: 10.0.20.49
